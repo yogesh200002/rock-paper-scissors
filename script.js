@@ -10,7 +10,6 @@ function playRound(playerSelection,computerSelection){
         case "rock":
             if(computerSelection === "paper"){
                 console.log("You Lose! Paper defeats Rock");
-                winCount>0 ? winCount -= 1 : winCount=0;
                 break
             } 
             else if(computerSelection === "scissors"){
@@ -25,7 +24,6 @@ function playRound(playerSelection,computerSelection){
         case "paper":
             if(computerSelection === "scissors"){
                 console.log("You Lose! Scissors defeats paper");
-                winCount>0 ? winCount -= 1 : winCount=0;
                 break
             } 
             else if(computerSelection === "rock"){
@@ -40,7 +38,6 @@ function playRound(playerSelection,computerSelection){
         case "scissors":
             if(computerSelection === "rock"){
                 console.log("You Lose! Rock defeats Scissors");
-                winCount>0 ? winCount -= 1 : winCount=0;
                 break
             } 
             else if(computerSelection === "paper"){
