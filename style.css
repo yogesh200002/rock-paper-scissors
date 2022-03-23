@@ -1,0 +1,83 @@
+body{
+    background-color: rgb(228, 212, 125);
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+}
+
+main{
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+header,h2,.heading,footer{
+    text-align: center;
+}
+
+.heading{
+    font-size: x-large;
+    font-weight: bolder;
+    margin-bottom: 10px;
+}
+
+img{
+    height: 100px;
+    width: 100px;
+}
+
+.subtext{
+    text-align: center;
+}
+
+.icons{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.playerchoice,.computerchoice{
+    display: flex;
+    gap: 50px;
+}
+
+.outcome{
+    height: 100px;
+    display: flex;
+    background-color: aliceblue;
+    color: black;
+    align-items: center;
+    justify-content: center;
+}
+
+.scoreboard{
+    display: flex;
+    flex-direction: column;
+}
+
+.scoreContainer{
+    display: flex;
+    justify-content: space-evenly;
+    color: black;
+}
+
+.player,.computer{
+    height: 100px;
+    width: 300px;
+    background-color: aliceblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer{
+    margin-top: auto;
+    background-color: antiquewhite;
+    color: black;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

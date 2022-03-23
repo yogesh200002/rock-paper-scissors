@@ -3,7 +3,8 @@ function computerPlay(){
     return elements[Math.floor(Math.random()*3)]
 }
 
-let winCount=0;
+let playerCount=0;
+let compCount=0;
 
 function playRound(playerSelection,computerSelection){
     switch(playerSelection){
@@ -19,7 +20,6 @@ function playRound(playerSelection,computerSelection){
             }
             else{
                 return console.log("Draw");
-                break
             }
         case "paper":
             if(computerSelection === "scissors"){
@@ -33,7 +33,6 @@ function playRound(playerSelection,computerSelection){
             }
             else{
                 return console.log("Draw");
-                break
             }
         case "scissors":
             if(computerSelection === "rock"){
@@ -47,17 +46,11 @@ function playRound(playerSelection,computerSelection){
             }
             else{
                 return console.log("Draw")
-                break
             }
         default:
             return console.log("Please Enter a Valid Choice or enter scissor as scissors\nThis is not case sensitive but check your spellings though :)")
-            break
     }
 }
-for(i=0;i<5;i++){
-    let playerSelection = prompt("Rock, Paper or Scissors?");
-    playerSelection = playerSelection.toLowerCase();
-    let computerSelection = computerPlay();
-    playRound(playerSelection,computerSelection)
-}
-winCount>=3 ? console.log("You Win!, Your Score is:",winCount) : console.log("You Lose! Better luck next time, Your Score is:",winCount);
+let playerSelection = ;
+let computerSelection = computerPlay();
+playRound(playerSelection,computerSelection)
