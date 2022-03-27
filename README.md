@@ -1,2 +1,2 @@
 # rock-paper-scissors
-A small game created using JavaScript
+A small game created using HTML, CSS and Javascript
