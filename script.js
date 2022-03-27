@@ -3,6 +3,7 @@ function computerPlay(){
     return elements[Math.floor(Math.random()*3)]
 }
 
+// Initialising the variable with selectors and values
 let playerCount=0;
 let compCount=0;
 let playerSelection;
@@ -20,36 +21,48 @@ let rockC = document.querySelector('#rockC')
 let paperC = document.querySelector('#paperC')
 let scissorsC = document.querySelector('#scissorsC')
 
+// To make other choices transparent when other choice is made
+function transparent(...values){
+    values.forEach(value => {
+        value.style.transform = 'scale(1)'
+        value.style.borderColor = 'transparent'
+        value.style.borderRadius = '0px'
+        value.style.borderStyle = 'none'
+        value.style.borderWidth = '0px'
+    })
+}
+// To make Effects for computer choice
 function transition(choice){
     if(choice == 'rock'){
-        rockC.style.backgroundColor = 'red'
-        rockC.style.transform = 'scale(1.2)'
-        paperC.style.backgroundColor = 'transparent'
-        paperC.style.transform = 'scale(1)'
-        scissorsC.style.backgroundColor = 'transparent'
-        scissorsC.style.transform = 'scale(1)'
+        rockC.style.borderColor = 'yellow'
+        rockC.style.transform = 'scale(1.3)'
+        rockC.style.borderRadius = '5px'
+        rockC.style.borderStyle = 'dashed'
+        rockC.style.borderWidth = '7px'
+        transparent(paperC,scissorsC)
     }
     else if(choice == 'paper'){
-        rockC.style.backgroundColor = 'transparent'
-        rockC.style.transform = 'scale(1)'
-        paperC.style.backgroundColor = 'red'
-        paperC.style.transform = 'scale(1.2)'
-        scissorsC.style.backgroundColor  = 'transparent'
-        scissorsC.style.transform = 'scale(1)'
+        paperC.style.borderColor = 'yellow'
+        paperC.style.transform = 'scale(1.3)'
+        paperC.style.borderRadius = '5px'
+        paperC.style.borderStyle = 'dashed'
+        paperC.style.borderWidth = '7px'
+        transparent(rockC,scissorsC)
     }
-    else if(choice == 'scissors'){
-        rockC.style.backgroundColor = 'transparent'
-        rockC.style.transform = 'scale(1)'
-        paperC.style.backgroundColor = 'transparent'
-        paperC.style.transform = 'scale(1)'
-        scissorsC.style.backgroundColor = 'red'
-        scissorsC.style.transform = 'scale(1.2)'
+    else if(choice == 'scissors'){           
+        scissorsC.style.borderColor = 'yellow'
+        scissorsC.style.transform = 'scale(1.3)'
+        scissorsC.style.borderRadius = '5px'
+        scissorsC.style.borderStyle = 'dashed'
+        scissorsC.style.borderWidth = '7px'
+        transparent(rockC,paperC)
     }
     else{
         return;
     }
 }
 
+// Eventlistener functions when a player clicks the choice
 let rock = function (){
     player = 'rock'
     computer = computerPlay();
@@ -77,10 +90,16 @@ let scissors = function (){
     document.querySelector(".computer").innerText= `Computer Score: ${compCount}`
 }
 
+rockbtn.addEventListener('click', rock);
+paperbtn.addEventListener('click', paper);
+scissorbtn.addEventListener('click', scissors);
+
+// Refresh Function
 function reload(){
     window.location.reload();
 }
 
+// Returning the computer choices to normal state after the winner is decided
 function normal(){
     rockC.style.backgroundColor = 'transparent'
     paperC.style.backgroundColor = 'transparent'
@@ -90,6 +109,7 @@ function normal(){
     scissorsC.style.transform = 'scale(1)'
 }
 
+// Game Decision and points counter based on choices
 function playRound(playerSelection,computerSelection){
     if(playerCount < 5 && compCount < 5){
         switch(playerSelection){
@@ -149,6 +169,7 @@ function playRound(playerSelection,computerSelection){
         rockbtn.removeEventListener('click', rock)
         paperbtn.removeEventListener('click', paper)
         scissorbtn.removeEventListener('click', scissors)
+        transparent(rockC,paperC,scissorsC)
         }
     else if(compCount == 5){
         final.textContent = "You Lose!!! Computer Reached 5 points before you"
@@ -159,14 +180,17 @@ function playRound(playerSelection,computerSelection){
         rockbtn.removeEventListener('click', rock)
         paperbtn.removeEventListener('click', paper)
         scissorbtn.removeEventListener('click', scissors)
+        transparent(rockC,paperC,scissorsC)
         }
 }
 
+// Replacing the header with result heading and button
 function finalResult(add,replace){
     add.parentNode.replaceChild(replace,add)
     replace.append(button)
 }
 
+// Styling the header and button of the finalResult
 function modify(text,button1){
     text.style.fontSize = 'x-large';
     text.style.fontWeight = 'bolder';
@@ -187,13 +211,10 @@ function modify(text,button1){
     button1.style.fontFamily = 'Bungee'
 }
 
+// Updating Results after a choice is made
 function outcome(string){
     let line = document.createElement("li")
     let content = document.createTextNode(string)
     line.appendChild(content)
     result.insertBefore(line,result.firstChild)
 }
-
-rockbtn.addEventListener('click', rock);
-paperbtn.addEventListener('click', paper);
-scissorbtn.addEventListener('click', scissors);
