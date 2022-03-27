@@ -5,52 +5,195 @@ function computerPlay(){
 
 let playerCount=0;
 let compCount=0;
+let playerSelection;
+let result = document.querySelector(".outcome")
 
-function playRound(playerSelection,computerSelection){
-    switch(playerSelection){
-        case "rock":
-            if(computerSelection === "paper"){
-                console.log("You Lose! Paper defeats Rock");
-                break
-            } 
-            else if(computerSelection === "scissors"){
-                console.log("You Win!, Rock defeats Scissors");
-                winCount += 1;
-                break
-            }
-            else{
-                return console.log("Draw");
-            }
-        case "paper":
-            if(computerSelection === "scissors"){
-                console.log("You Lose! Scissors defeats paper");
-                break
-            } 
-            else if(computerSelection === "rock"){
-                console.log("You Win!, Paper defeats Rock");
-                winCount += 1;
-                break
-            }
-            else{
-                return console.log("Draw");
-            }
-        case "scissors":
-            if(computerSelection === "rock"){
-                console.log("You Lose! Rock defeats Scissors");
-                break
-            } 
-            else if(computerSelection === "paper"){
-                console.log("You Win!, Scissors defeats Paper");
-                winCount += 1;
-                break
-            }
-            else{
-                return console.log("Draw")
-            }
-        default:
-            return console.log("Please Enter a Valid Choice or enter scissor as scissors\nThis is not case sensitive but check your spellings though :)")
+let rockbtn = document.getElementById('rock')
+let paperbtn = document.getElementById('paper')
+let scissorbtn = document.getElementById('scissors')
+
+let main = document.querySelector('.heading')
+let final = document.createElement("div")
+let button = document.createElement('button')
+
+let rockC = document.querySelector('#rockC')
+let paperC = document.querySelector('#paperC')
+let scissorsC = document.querySelector('#scissorsC')
+
+function transition(choice){
+    if(choice == 'rock'){
+        rockC.style.backgroundColor = 'red'
+        rockC.style.transform = 'scale(1.2)'
+        paperC.style.backgroundColor = 'transparent'
+        paperC.style.transform = 'scale(1)'
+        scissorsC.style.backgroundColor = 'transparent'
+        scissorsC.style.transform = 'scale(1)'
+    }
+    else if(choice == 'paper'){
+        rockC.style.backgroundColor = 'transparent'
+        rockC.style.transform = 'scale(1)'
+        paperC.style.backgroundColor = 'red'
+        paperC.style.transform = 'scale(1.2)'
+        scissorsC.style.backgroundColor  = 'transparent'
+        scissorsC.style.transform = 'scale(1)'
+    }
+    else if(choice == 'scissors'){
+        rockC.style.backgroundColor = 'transparent'
+        rockC.style.transform = 'scale(1)'
+        paperC.style.backgroundColor = 'transparent'
+        paperC.style.transform = 'scale(1)'
+        scissorsC.style.backgroundColor = 'red'
+        scissorsC.style.transform = 'scale(1.2)'
+    }
+    else{
+        return;
     }
 }
-let playerSelection = ;
-let computerSelection = computerPlay();
-playRound(playerSelection,computerSelection)
+
+let rock = function (){
+    player = 'rock'
+    computer = computerPlay();
+    transition(computer)
+    playRound(player,computer)
+    document.querySelector(".player").innerText= `Player Score: ${playerCount}`
+    document.querySelector(".computer").innerText= `Computer Score: ${compCount}`
+}
+
+let paper = function (){
+    player = 'paper'
+    computer = computerPlay();
+    transition(computer)
+    playRound(player,computer)
+    document.querySelector(".player").innerText= `Player Score: ${playerCount}`
+    document.querySelector(".computer").innerText= `Computer Score: ${compCount}`
+}
+
+let scissors = function (){
+    player = 'scissors'
+    computer = computerPlay();
+    transition(computer)
+    playRound(player,computer)
+    document.querySelector(".player").innerText= `Player Score: ${playerCount}`
+    document.querySelector(".computer").innerText= `Computer Score: ${compCount}`
+}
+
+function reload(){
+    window.location.reload();
+}
+
+function normal(){
+    rockC.style.backgroundColor = 'transparent'
+    paperC.style.backgroundColor = 'transparent'
+    scissorsC.style.backgroundColor = 'transparent'
+    rockC.style.transform = 'scale(1)'
+    paperC.style.transform = 'scale(1)'
+    scissorsC.style.transform = 'scale(1)'
+}
+
+function playRound(playerSelection,computerSelection){
+    if(playerCount < 5 && compCount < 5){
+        switch(playerSelection){
+            case "rock":
+                if(computerSelection === "paper"){
+                    outcome(`You Lose! Paper defeats Rock. Player point: ${playerCount}, Computer point: ${compCount}`);
+                    compCount+=1
+                    break
+                } 
+                else if(computerSelection === "scissors"){
+                    outcome(`You Win!, Rock defeats Scissors. Player point: ${playerCount}, Computer point: ${compCount}`);
+                    playerCount += 1;
+                    break
+                }
+                else{
+                    outcome(`Draw, No point. Player point: ${playerCount}, Computer point: ${compCount}`);
+                    break
+                }
+            case "paper":
+                if(computerSelection === "scissors"){
+                    outcome(`You Lose! Scissors defeats paper. Player point: ${playerCount}, Computer point: ${compCount}`);
+                    compCount+=1
+                    break
+                } 
+                else if(computerSelection === "rock"){
+                    outcome(`You Win!, Paper defeats Rock. Player point: ${playerCount}, Computer point: ${compCount}`);
+                    playerCount += 1;
+                    break
+                }
+                else{
+                    outcome(`Draw, No point. Player point: ${playerCount}, Computer point: ${compCount}`);
+                    break
+                }
+            case "scissors":
+                if(computerSelection === "rock"){
+                    outcome(`You Lose! Rock defeats Scissors. Player point: ${playerCount}, Computer point: ${compCount}`);
+                    compCount+=1
+                    break
+                } 
+                else if(computerSelection === "paper"){
+                    outcome(`You Win!, Scissors defeats Paper. Player point: ${playerCount}, Computer point: ${compCount}`);
+                    playerCount += 1;
+                    break
+                }
+                else{
+                    outcome(`Draw, No point. Player point: ${playerCount}, Computer point: ${compCount}`)
+                    break
+                }
+            }
+    }
+    if(playerCount == 5){
+        final.textContent = 'Congragulations!!, You Reached 5 points before computer.'
+        finalResult(main,final)
+        modify(final,button)
+        outcome(`Final Round Player Choice: ${playerSelection}, Computer Choice: ${computerSelection}`)
+        normal()
+        rockbtn.removeEventListener('click', rock)
+        paperbtn.removeEventListener('click', paper)
+        scissorbtn.removeEventListener('click', scissors)
+        }
+    else if(compCount == 5){
+        final.textContent = "You Lose!!! Computer Reached 5 points before you"
+        finalResult(main,final)
+        modify(final,button)
+        outcome(`Final Round; Player Choice: ${playerSelection}, Computer Choice: ${computerSelection}`)
+        normal()
+        rockbtn.removeEventListener('click', rock)
+        paperbtn.removeEventListener('click', paper)
+        scissorbtn.removeEventListener('click', scissors)
+        }
+}
+
+function finalResult(add,replace){
+    add.parentNode.replaceChild(replace,add)
+    replace.append(button)
+}
+
+function modify(text,button1){
+    text.style.fontSize = 'x-large';
+    text.style.fontWeight = 'bolder';
+    text.style.margin = '20px 10px';
+    text.style.textAlign = 'center'
+    text.style.display = 'flex'
+    text.style.flexDirection = 'column'
+    text.style.alignItems = 'center'
+    text.style.gap = '10px'
+    text.style.fontFamily = 'Bungee Shade'
+    button1.textContent = 'Play Again'
+    button1.addEventListener('click',reload)
+    button1.style.height = '50px'
+    button1.style.width = '100px'
+    button1.style.fontWeight = 'bold'
+    button1.style.fontSize = 'medium'
+    button1.className = 'buttonHover'
+    button1.style.fontFamily = 'Bungee'
+}
+
+function outcome(string){
+    let line = document.createElement("li")
+    let content = document.createTextNode(string)
+    line.appendChild(content)
+    result.insertBefore(line,result.firstChild)
+}
+
+rockbtn.addEventListener('click', rock);
+paperbtn.addEventListener('click', paper);
+scissorbtn.addEventListener('click', scissors);

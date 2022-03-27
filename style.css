@@ -1,27 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
 body{
     background-color: rgb(228, 212, 125);
     color: white;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Bungee', cursive;    
     display: flex;
     flex-direction: column;
     height: 100vh;
     margin: 0;
 }
 
+header{
+    background-color: chocolate;
+    font-family: 'Press Start 2P', cursive;
+}
+
 main{
     flex: 1;
     justify-content: center;
     align-items: center;
+    background-color: black;
 }
 
-header,h2,.heading,footer{
+header,h2,.heading,footer,.headingchoice{
     text-align: center;
 }
 
 .heading{
     font-size: x-large;
     font-weight: bolder;
+    margin: 20px 10px;
+    font-family: 'Righteous', cursive;
+}
+
+button{
+    border-radius: 4px;
+}
+
+.headingchoice{
     margin-bottom: 10px;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+#rock,#paper,#scissors{
+    transition: 0.2s;
+    margin-bottom: 10px;
+}
+
+#rock:hover,#paper:hover,#scissors:hover{
+    background-color: chartreuse;
+    transform: scale(1.2);
+}
+
+#rock:active,#paper:active,#scissors:active{
+    background-color: blue;
+}
+
+#rockC,#paperC,#scissorsC{
+    cursor: not-allowed;
+    opacity: 0.6;
+    margin-bottom: 10px;
+    transition: 0.2s;
 }
 
 img{
@@ -31,6 +74,7 @@ img{
 
 .subtext{
     text-align: center;
+    color: black;
 }
 
 .icons{
@@ -38,18 +82,26 @@ img{
     justify-content: space-evenly;
 }
 
-.playerchoice,.computerchoice{
+.playerchoiceicons,.computerchoiceicons{
     display: flex;
     gap: 50px;
 }
 
 .outcome{
-    height: 100px;
     display: flex;
-    background-color: aliceblue;
-    color: black;
+    color: whitesmoke;
     align-items: center;
     justify-content: center;
+    flex: 1;
+    list-style: none;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0;
+}
+
+.buttonHover:hover{
+    background-color: yellow;
+    transform: scale(1.1);
 }
 
 .scoreboard{
