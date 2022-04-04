@@ -52,11 +52,7 @@ button{
 }
 
 #rock:hover,#paper:hover,#scissors:hover{
-    border-color: red;
-    border-radius: 5px;
-    border-style: dashed;
-    transform: scale(1.3);
-    border-width: 7px;
+    transform: scale(1.4);
 }
 
 #rock:active,#paper:active,#scissors:active{

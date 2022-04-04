@@ -26,35 +26,23 @@ function transparent(...values){
     values.forEach(value => {
         value.style.transform = 'scale(1)'
         value.style.borderColor = 'transparent'
-        value.style.borderRadius = '0px'
-        value.style.borderStyle = 'none'
-        value.style.borderWidth = '0px'
     })
 }
 // To make Effects for computer choice
 function transition(choice){
     if(choice == 'rock'){
         rockC.style.borderColor = 'yellow'
-        rockC.style.transform = 'scale(1.3)'
-        rockC.style.borderRadius = '5px'
-        rockC.style.borderStyle = 'dashed'
-        rockC.style.borderWidth = '7px'
+        rockC.style.transform = 'scale(1.4)'
         transparent(paperC,scissorsC)
     }
     else if(choice == 'paper'){
         paperC.style.borderColor = 'yellow'
-        paperC.style.transform = 'scale(1.3)'
-        paperC.style.borderRadius = '5px'
-        paperC.style.borderStyle = 'dashed'
-        paperC.style.borderWidth = '7px'
+        paperC.style.transform = 'scale(1.4)'
         transparent(rockC,scissorsC)
     }
     else if(choice == 'scissors'){           
         scissorsC.style.borderColor = 'yellow'
-        scissorsC.style.transform = 'scale(1.3)'
-        scissorsC.style.borderRadius = '5px'
-        scissorsC.style.borderStyle = 'dashed'
-        scissorsC.style.borderWidth = '7px'
+        scissorsC.style.transform = 'scale(1.4)'
         transparent(rockC,paperC)
     }
     else{
