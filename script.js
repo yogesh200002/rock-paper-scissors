@@ -26,6 +26,7 @@ function transparent(...values){
     values.forEach(value => {
         value.style.transform = 'scale(1)'
         value.style.borderColor = 'transparent'
+        value.style.visibility = 'hidden'
     })
 }
 // To make Effects for computer choice
@@ -33,16 +34,19 @@ function transition(choice){
     if(choice == 'rock'){
         rockC.style.borderColor = 'yellow'
         rockC.style.transform = 'scale(1.4)'
+        rockC.style.visibility = 'visible'
         transparent(paperC,scissorsC)
     }
     else if(choice == 'paper'){
         paperC.style.borderColor = 'yellow'
         paperC.style.transform = 'scale(1.4)'
+        paperC.style.visibility = 'visible'
         transparent(rockC,scissorsC)
     }
     else if(choice == 'scissors'){           
         scissorsC.style.borderColor = 'yellow'
         scissorsC.style.transform = 'scale(1.4)'
+        scissorsC.style.visibility = 'visible'
         transparent(rockC,paperC)
     }
     else{
